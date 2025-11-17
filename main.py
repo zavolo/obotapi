@@ -10,6 +10,7 @@ from client import TelegramClientManager
 from updates import UpdatesManager
 from processor import RequestProcessor
 from botfather import BotFatherManager
+from callback_monitor import CallbackMonitor
 from router import create_app
 from utils import AsyncRunner
 
@@ -21,6 +22,7 @@ class BotAPIServer:
         self.db = None
         self.clients = None
         self.updates = None
+        self.callback_monitor = None
         self.processor = None
         self.botfather = None
         self.app = None
@@ -35,7 +37,8 @@ class BotAPIServer:
         self.db = Database(Config.MONGODB_URI, self.main_loop)
         self.clients = TelegramClientManager(self.main_loop)
         self.updates = UpdatesManager()
-        self.processor = RequestProcessor(self.db, self.clients, self.updates)
+        self.callback_monitor = CallbackMonitor(self.db)
+        self.processor = RequestProcessor(self.db, self.clients, self.updates, self.callback_monitor)
         self.botfather = BotFatherManager(self.db, self.clients)
         self.async_runner = AsyncRunner(self.main_loop)
         await self.botfather.ensure_token()

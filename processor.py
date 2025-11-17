@@ -4,10 +4,11 @@ from methods import BotAPIMethods
 from events import EventHandlers
 
 class RequestProcessor:
-    def __init__(self, database, client_manager, updates_manager):
+    def __init__(self, database, client_manager, updates_manager, callback_monitor):
         self.db = database
         self.clients = client_manager
         self.updates = updates_manager
+        self.callback_monitor = callback_monitor
     
     async def process(self, token: str, method: str, params: Dict[str, Any]) -> Dict[str, Any]:
         try:
@@ -26,6 +27,7 @@ class RequestProcessor:
             if not self.updates.is_handler_registered(bot_id):
                 handlers = EventHandlers(client, bot_id, self.updates, self.db)
                 await handlers.setup()
+                await self.callback_monitor.start_monitoring(bot_id, self.updates)
             api = BotAPIMethods(client, self.updates)
             method_lower = method.lower()
             if method_lower == 'getme':
