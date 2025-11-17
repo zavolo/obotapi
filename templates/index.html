@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ brand }}</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: linear-gradient(180deg, #1a4d2e 0%, #0d2818 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    background: linear-gradient(180deg, #2d5a3d 0%, #1f3d2a 100%);
+    border: 1px solid #0d2818;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+    text-align: center;
+}
+
+.header h1 {
+    color: #e8f5e9;
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: #a5d6a7;
+    font-size: 14px;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+}
+
+.info-card {
+    background: linear-gradient(180deg, #2d5a3d 0%, #234a31 100%);
+    border: 1px solid #0d2818;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+    overflow: hidden;
+}
+
+.info-card-header {
+    background: linear-gradient(180deg, #2e7d32 0%, #1b5e20 100%);
+    padding: 12px 20px;
+    border-bottom: 1px solid #0d2818;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.info-card-header h2 {
+    color: #e8f5e9;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
+}
+
+.info-card-body {
+    padding: 20px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #1f3d2a;
+    align-items: center;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    color: #a5d6a7;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+}
+
+.info-value {
+    color: #e8f5e9;
+    font-size: 14px;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+}
+
+.button {
+    display: inline-block;
+    background: linear-gradient(180deg, #2e7d32 0%, #1b5e20 100%);
+    color: #e8f5e9;
+    padding: 12px 24px;
+    border: 1px solid #0d2818;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.button:active {
+    background: linear-gradient(180deg, #1b5e20 0%, #2e7d32 100%);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3), inset 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.code-block {
+    background: #0d2818;
+    color: #a5d6a7;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 13px;
+    overflow-x: auto;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+    margin: 10px 0;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #1f3d2a;
+    color: #e8f5e9;
+    font-size: 14px;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+}
+
+.feature-list li:last-child {
+    border-bottom: none;
+}
+
+.feature-list li:before {
+    content: "✓";
+    color: #66bb6a;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #a5d6a7;
+    font-size: 12px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.status-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #66bb6a;
+    box-shadow: 0 0 6px rgba(102, 187, 106, 0.8), inset 0 1px 1px rgba(255,255,255,0.3);
+    margin-right: 8px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .info-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>{{ brand }}</h1>
+            <p>Совместимый с Telegram Bot API сервер</p>
+        </div>
+        <div class="info-card">
+            <div class="info-card-header">
+                <h2>Статус сервера</h2>
+            </div>
+            <div class="info-card-body">
+                <div class="info-row">
+                    <span class="info-label">Статус:</span>
+                    <span class="info-value"><span class="status-indicator"></span>Работает</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">API версия:</span>
+                    <span class="info-value">Bot API 2.0</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Протокол:</span>
+                    <span class="info-value">MTProto</span>
+                </div>
+            </div>
+        </div>
+        <div class="info-card">
+            <div class="info-card-header">
+                <h2>Документация API</h2>
+            </div>
+            <div class="info-card-body">
+                <p style="margin-bottom: 15px; color: #666; font-size: 14px; text-shadow: 0 1px 0 rgba(255,255,255,0.7);">
+                    Сервер поддерживает стандартные методы Telegram Bot API. Используйте следующий формат для запросов:
+                </p>
+                <div class="code-block">
+                    https://api.opengra.me/bot&lt;token&gt;/&lt;method&gt;
+                </div>
+                <p style="margin-top: 15px; color: #666; font-size: 14px; text-shadow: 0 1px 0 rgba(255,255,255,0.7);">
+                    Полная документация доступна по адресу:
+                </p>
+                <div style="text-align: center; margin-top: 15px;">
+                    <a href="https://core.telegram.org/bots/api" class="button" target="_blank">Открыть документацию</a>
+                </div>
+            </div>
+        </div>
+        <div class="info-card">
+            <div class="info-card-header">
+                <h2>Поддерживаемые методы</h2>
+            </div>
+            <div class="info-card-body">
+                <ul class="feature-list">
+                    <li>getMe - получить информацию о боте</li>
+                    <li>sendMessage - отправить сообщение (GET/POST)</li>
+                    <li>deleteMessage - удалить сообщение</li>
+                    <li>editMessageText - редактировать текст сообщения</li>
+                    <li>getUpdates - получить обновления (long polling)</li>
+                    <li>answerCallbackQuery - ответить на callback запрос</li>
+                </ul>
+            </div>
+        </div>
+        <div class="info-card">
+            <div class="info-card-header">
+                <h2>Пример использования</h2>
+            </div>
+            <div class="info-card-body">
+                <p style="margin-bottom: 10px; color: #666; font-size: 14px; text-shadow: 0 1px 0 rgba(255,255,255,0.7);">
+                    <strong>GET запрос:</strong>
+                </p>
+                <div class="code-block">
+                    curl "https://api.opengra.me/bot123:ABC/sendMessage?chat_id=1488&text=Те беззаботные года юности, пора, думал, не повзрослею, и будет так всегда"
+                </div>
+                <p style="margin: 15px 0 10px 0; color: #666; font-size: 14px; text-shadow: 0 1px 0 rgba(255,255,255,0.7);">
+                    <strong>POST запрос (JSON):</strong>
+                </p>
+                <div class="code-block">
+                    curl -X POST "https://api.opengra.me/bot123:ABC/sendMessage" \<br>
+                    &nbsp;&nbsp;-H "Content-Type: application/json" \<br>
+                    &nbsp;&nbsp;-d '{"chat_id": 1488, "text": "Может я и балуюсь, но не так уж жестко"}'
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>{{ brand }} • Работает на MTProto</p>
+        </div>
+    </div>
+</body>
+</html>
